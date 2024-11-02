@@ -17,21 +17,6 @@ const Display = () => {
                     <div className='col-3 pb-5'>
                         <BlogCard />
                     </div>
-                    <div className='col-3 pb-5'>
-                        <BlogCard />
-                    </div>
-                    <div className='col-3 pb-5'>
-                        <BlogCard />
-                    </div>
-                    <div className='col-3 pb-5'>
-                        <BlogCard />
-                    </div>
-                    <div className='col-3 pb-5'>
-                        <BlogCard />
-                    </div>
-                    <div className='col-3 pb-5'>
-                        <BlogCard />
-                    </div>
                 </Row>
             </Container>
         </div>
