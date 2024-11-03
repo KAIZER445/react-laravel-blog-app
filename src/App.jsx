@@ -15,7 +15,7 @@ function App() {
         <Route path='/' element={<Display/>} />
         <Route path='/CreateBlog' element={<CreateBlog />} />
       </Routes>
-      <ToastContainer />
+      <ToastContainer position="bottom-right"/>
     </>
   )
 }

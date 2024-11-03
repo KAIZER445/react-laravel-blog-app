@@ -11,6 +11,11 @@ import { useNavigate } from 'react-router-dom';
 const BlogForm = () => {
     const [html, setHtml] = useState('');
     const navigate = useNavigate();
+    const notifySuccess = (message) => toast.success(message
+        , {
+            autoClose: 3000,
+        }
+    );
 
     function handleEditorChange(value) {
         setHtml(value);
@@ -23,16 +28,22 @@ const BlogForm = () => {
         formState: { errors },
     } = useForm();
 
+    const stripHtmlTags = (html) => {
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = html;
+        return tempDiv.textContent || "";
+    };
+
     const formSubmit = async (data) => {
-        const formData = { ...data, description: html };
-        const res = await fetch("http://127.0.0.1:8000/api/blog",{
+        const formData = { ...data, description: stripHtmlTags(html) };
+        const res = await fetch("http://127.0.0.1:8000/api/blog", {
             method: "POST",
             headers: {
-                'Content-type' : 'application/json'
+                'Content-type': 'application/json'
             },
             body: JSON.stringify(formData)
         });
-        toast("Blog added successfully");
+        notifySuccess("Successfully saved! 👍");
 
         navigate('/');
     }
@@ -42,17 +53,17 @@ const BlogForm = () => {
             <Card.Body className='border-0 shadow'>
 
                 <form onSubmit={handleSubmit(formSubmit)}>
-                    <InputGroup className="mb-3">
+                    <InputGroup>
                         <InputGroup.Text>Title</InputGroup.Text>
-                        <Form.Control 
+                        <Form.Control
                             {...register('title', { required: true })}
                             placeholder="Enter title"
                             className={`${errors.title ? 'is-invalid' : ''}`}
                         />
-                        {errors.title && <p className="text-danger">This field is required</p>}
                     </InputGroup>
+                    {errors.title && <p className="text-danger fst-italic">This field is required</p>}
 
-                    <InputGroup className="mb-3">
+                    <InputGroup className="my-3">
                         <InputGroup.Text>Short Description</InputGroup.Text>
                         <Form.Control
                             placeholder='Enter short description'
@@ -62,21 +73,21 @@ const BlogForm = () => {
 
                     <ReactQuill value={html} onChange={handleEditorChange} className='mb-3' />
 
-                    <InputGroup className='mb-3'>
+                    <InputGroup className='my-3'>
                         <Form.Control type="file" aria-label="Choose file" {...register('file')} />
                     </InputGroup>
 
-                    <InputGroup className="mb-4">
+                    <InputGroup>
                         <InputGroup.Text>Author</InputGroup.Text>
                         <Form.Control
                             {...register('author', { required: true })}
                             placeholder="Enter author name"
                             className={`${errors.author ? 'is-invalid' : ''}`}
                         />
-                        {errors.author && <p className="text-danger">This field is required</p>}
                     </InputGroup>
+                    {errors.author && <p className="text-danger fst-italic">This field is required</p>}
 
-                    <button type="submit" className='btn btn-dark border w-100'>Submit</button>
+                    <button type="submit" className='btn btn-dark border w-100 mt-2'>Submit</button>
                 </form>
 
             </Card.Body>
