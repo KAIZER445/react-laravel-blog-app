@@ -124,7 +124,7 @@ const BlogForm = () => {
 
                         <button type="submit" className='btn btn-dark border w-100 mt-3'>Submit</button>
                     </form>
-
+                    
                 </Card.Body>
             </Card>
         </>
