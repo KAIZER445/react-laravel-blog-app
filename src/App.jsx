@@ -6,6 +6,7 @@ import CreateBlog from './Pages/CreateBlog';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DetailPage from './Pages/DetailPage';
+import EditBlog from './Pages/EditBlog';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<Display/>} />
         <Route path='/CreateBlog' element={<CreateBlog />} />
         <Route path='/blog/:id' element={<DetailPage />} />
+        <Route path='/blog/edit/:id' element={<EditBlog />} />
       </Routes>
       
       <ToastContainer position="bottom-right"/>
