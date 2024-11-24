@@ -14,10 +14,10 @@ const EditBlog = () => {
                         </div>
                 </div>
                 <div className="col-12">
-
+                <EditCard/>
                 </div>
             </div>
-            <EditCard/>
+            
         </div>
 
     </div>

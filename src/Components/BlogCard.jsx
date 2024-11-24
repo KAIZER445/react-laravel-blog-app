@@ -12,7 +12,7 @@ const BlogCard = ({ blog }) => {
 
     return (
         <div>
-            <Card className='w-100'>
+            <Card className='w-100 overflow-hidden'>
                 <div className='w-100 overflow-hidden d-flex align-items-center' style={{height:'200px'}}>
                 <Card.Img variant="top" src={showImage(blog.image)} className='rounded-0' />
                 </div>
