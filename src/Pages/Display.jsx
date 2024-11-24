@@ -31,7 +31,7 @@ const Display = () => {
                     {
                         (blogs) && blogs.map((blog) => {
                             return (<div className='col-3 pb-5'>
-                                <BlogCard blog={blog} key={blog.id}/>
+                                <BlogCard blogs={blogs} setBlogs={setBlogs} blog={blog} key={blog.id}/>
                             </div>)
                         })
                     }
